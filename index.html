@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Automotivo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="java.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Souza Centro Automotivo</h1>
+        <nav>
+            <ul>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header><div id="welcome-popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Bem-vindo ao Souza Centro Automotivo!</h2>
+            <p>Explore nossos serviços e entre em contato para mais informações.</p>
+        </div>
+    </div>
+    <section id="servicos">
+        <h2>Serviços:</h2>
+        <p>Alinhamento <br> Balanceamento - Troca de óleo<br> Reforma de roda - Escapamento<br> Suspenção em geral<br> Pneus Nacionais</p>
+    </section>
+    <section id="galeria">
+        <h2>Galeria:</h2>
+        <div class="fotos">
+            <img src="1.jpg" alt="Interior da loja" width="300" height="200" onclick="abrirEmTelaCheia(this)">
+            <img src="2.jpg" alt="Interior da loja" width="300" height="200" onclick="abrirEmTelaCheia(this)">
+            <img src="3.jpg" alt="Interior da loja" width="300" height="200" onclick="abrirEmTelaCheia(this)">
+        </div>
+        
+    </section>
+    <section id="contato">
+        <h2>Contatos:</h2>
+        <p>(11) 99399-2973 - WhatsApp <br> (11) 98927-5108 - WhatsApp</p>
+    </section>
+    <section class="contato">
+        <h2>Entre em Contato</h2>
+        <form>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="message"></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <div id="modal" class="modal" onclick="fecharModal()">
+        <span class="fechar">&times;</span>
+        <img class="modal-conteudo" id="imagem-modal">
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Souza Centro Automotivo. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const footer = document.querySelector('footer');
+    
+        window.addEventListener('scroll', function() {
+            const st = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (st > lastScrollTop) {
+            
+                footer.classList.add('footer-hidden');
+            } else {
+
+                footer.classList.remove('footer-hidden');
+            }
+            lastScrollTop = st <= 0 ? 0 : st; 
+        });
+
+        function abrirEmTelaCheia(imagem) {
+            var modal = document.getElementById("modal"); 
+            var modalImg = document.getElementById("imagem-modal");
+            modal.style.display = "block"; 
+            modalImg.src = imagem.src; 
+        }
+
+        function fecharModal() {
+            var modal = document.getElementById("modal"); 
+            modal.style.display = "none"; 
+        }
+    </script>
+</body>
+</html>
